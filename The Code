@@ -1,0 +1,114 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Exercise1_HW4
+{
+
+public static void choice1(double a) //Check
+	{
+	DecimalFormat formatter = new DecimalFormat("0.00");
+	System.out.println("Your current balance is $" + formatter.format(a));
+	}
+
+public static double choice2(double b) //Deposit
+	{
+	Scanner sc2 = new Scanner(System.in);
+	System.out.println("Enter the amount you want to deposit.");
+	double c = sc2.nextDouble();
+	return c;
+	}
+
+public static double choice3(double d) //Withdraw
+	{
+	Scanner sc3 = new Scanner(System.in);
+	double f = 0.00;
+	
+	System.out.println("Enter the amount you want to withdraw.");
+	double w2 = sc3.nextDouble();
+	if (w2 <=0.00) 
+		{
+		System.out.println("Incorrect Amount!");
+
+		}
+			
+	else 
+		{
+		if (w2 > d) 
+			{
+			System.out.println("Sorry, you don't have sufficient balance!");
+			}
+		else
+			{
+			f = w2;
+			}
+		}
+	
+	return f;
+	}
+
+public static boolean choice4() //Exist
+	{
+	System.out.println("Goodbye!");
+	boolean g = false;
+	return g;
+	}
+
+public static void notchoice() //Nonexistent choice
+	{
+	System.out.println("Incorrect selection, please try again.");
+	}
+
+
+
+
+public static void main(String[] args) 
+	{
+	
+	Scanner scanner = new Scanner(System.in);
+	
+	boolean loop = true;
+	double cash = 100.00;
+	double deposit;
+	double withdraw;
+
+
+	do
+		{
+
+		System.out.println("1.	View your account balance");
+		System.out.println("2.	Deposit cash");
+		System.out.println("3.	Withdraw cash");
+		System.out.println("4.	Exit");
+		System.out.println("Enter your selection: \n");
+
+		int choice = scanner.nextInt();
+		System.out.println();
+
+		if (choice == 1) 		//Check
+			{
+			choice1(cash);
+			}
+
+		else if (choice == 2) 	//Deposit
+			{
+			cash += choice2(cash);
+			}
+
+		else if (choice == 3) 	//Withdraw
+			{
+			cash -= choice3(cash);
+			}
+
+		else if (choice == 4)	 //Exit
+			{
+			loop = choice4();
+			}
+
+		else 				//Nonexistent option
+			{
+			notchoice();
+			}
+		}
+	while (loop == true);
+	}
+}
